@@ -9,227 +9,227 @@ import java.applet.AudioClip;
 import javax.swing.border.*;
 import java.io.*;
 public class kadai_10_2 extends JFrame{
-	static int k_lavel = 1;
-	static int n_lavel = 1;
-	static int p_lavel = 1;
-	static JLabel l2;		/*ƒ‰ƒxƒ‹‚Ö‚Ì•¶šo—Í—p*/
-	/*ƒRƒ“ƒXƒgƒ‰ƒNƒ^*/
-	kadai_10_2(){
-		JFrame frame = new JFrame("Java‘æ10‰ñ‰Û‘è");
-		//setBounds(•\¦ˆÊ’u‚˜A•\¦ˆÊ’u‚™A•A‚‚³j
-		frame.setBounds(350, 100, 600, 523);
-		//‚˜‚É‚æ‚éƒEƒBƒ“ƒhƒE‚ÌI—¹
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//ƒRƒ}ƒ“ƒh”z’u‚Ìƒpƒlƒ‹p1=========================================================
-		JPanel p1 = new JPanel();
-		p1.setBorder(new EtchedBorder(EtchedBorder.RAISED,Color.white,Color.black));
-		p1.setPreferredSize(new Dimension(0,100));	/*x‚Í”½‰f‚³‚ê‚Ä‚È‚¢B•‚Í©“®‚¾‚Æv‚í‚ê‚éB*/
-		p1.setLayout(new GridLayout(2,3));
-		//ƒ{ƒ^ƒ“‚ğƒpƒlƒ‹p1‚É’Ç‰Á;---------------------------------------------------------
-		ArrayList<JButton> button = new ArrayList<JButton>();	/*ƒRƒŒƒNƒVƒ‡ƒ“‚Ìg—p*/
-		ImageIcon neko = new ImageIcon(getClass().getResource("neko.png"));
-		ImageIcon kama = new ImageIcon(getClass().getResource("kama.png"));
-		ImageIcon pu = new ImageIcon(getClass().getResource("pu.png"));
-		button.add(new JButton("ƒ}ƒ^ƒ^ƒr"));
-		button.add(new JButton("ƒoƒbƒ^"));
-		button.add(new JButton("ƒCƒl‰È‚Ì‘"));
-		button.add(new JButton("ƒlƒR                 ",neko));
-		button.add(new JButton("ƒJƒ}ƒLƒŠ           ",kama));
-		button.add(new JButton("ƒvƒŒ[ƒŠ[ƒhƒbƒO",pu));
-		for(JButton x:button){
-			p1.add(x);
-		}
-		JButton b1 = button.get(0);
-		JButton b2 = button.get(1);
-		JButton b3 = button.get(2);
-		JButton b4 = button.get(3);
-		JButton b5 = button.get(4);
-		JButton b6 = button.get(5);
-		b1.addActionListener(new levelUp(1));
-		b2.addActionListener(new levelUp(2));
-		b3.addActionListener(new levelUp(3));
-		b4.addActionListener(new status(1));
-		b5.addActionListener(new status(2));
-		b6.addActionListener(new status(3));
-		frame.add(p1, BorderLayout.SOUTH);
-		//========================================================================
-		//‰æ‘œ—p‚Ìƒ‰ƒxƒ‹l1===========================================================
-		JLabel l1 = new JLabel();
-		l1.setPreferredSize(new Dimension(600,365));
-		ImageIcon backGround = new ImageIcon(getClass().getResource("background.png"));
-		l1.setIcon(backGround);
-		frame.add(l1,BorderLayout.NORTH);
-		
-		//•¶š—p‚Ìƒpƒlƒ‹p2-----------------------------------------------------------
-		JPanel p2 = new JPanel();
-		p2.setPreferredSize(new Dimension(500,100));
-		p2.setBackground(Color.BLACK);
-		p2.setBorder(new LineBorder(Color.white, 4, false));
-		l1.setLayout(new BorderLayout());			
-		//•¶š‚Ì•\¦—p‚Ìƒ‰ƒxƒ‹l2------------------------------------------------------
-		l2 = new JLabel();
-		l2.setPreferredSize(new Dimension(400,70));
-		l2.setForeground(Color.white);				/*•¶š‚ÌF*/
-		p2.setLayout(new BorderLayout());			/*p2‚É“\‚è•t‚¯*/
-		p2.add(l2,BorderLayout.CENTER);
-		l1.add(p2,BorderLayout.SOUTH);				/*p2‚ğl1‚É“\‚è•t‚¯*/
-		
-		//ƒLƒƒƒ‰‚Ì“\‚è•t‚¯ƒpƒlƒ‹p3-------------------------------------------------------
-		JPanel p3 = new JPanel();
-		p3.setPreferredSize(new Dimension(500,350));
-		p3.setOpaque(false);			/*ƒpƒlƒ‹”wŒi‚Ì“§–¾‰»*/
-		p3.setLayout(new BorderLayout());
-		//ƒLƒƒƒ‰‚Ì“\‚è•t‚¯ƒ‰ƒxƒ‹l3--------------------------------------------------------
-		JLabel l3 = new JLabel();
-		JLabel l4 = new JLabel();
-		JLabel l5 = new JLabel();
-		ImageIcon kamakiri1 = new ImageIcon(getClass().getResource("kamakiri1.png"));
-		ImageIcon neko1 = new ImageIcon(getClass().getResource("neko1.png"));
-		ImageIcon pureri1 = new ImageIcon(getClass().getResource("pureri1.png"));
-		l3.setIcon(kamakiri1);
-		l4.setIcon(neko1);
-		l5.setIcon(pureri1);
-		p3.add(l3,BorderLayout.CENTER);				/*p3‚É“\‚è•t‚¯*/
-		p3.add(l4,BorderLayout.WEST);
-		p3.add(l5,BorderLayout.EAST);
-		l1.add(p3,BorderLayout.NORTH);				/*p3‚ğl1‚É“\‚è•t‚¯*/
-		
-		//========================================================================
-		//ƒo[‚Ìì¬================================================================
-		JMenuBar menuBar = new JMenuBar();
-		frame.setJMenuBar(menuBar);
-		//[ƒƒjƒ…[]
-		JMenu menu = new JMenu("ƒƒjƒ…[");
-		menuBar.add(menu);
-		//[ƒƒjƒ…[]-[ƒZ[ƒu]
-		JMenuItem save = new JMenuItem("ƒZ[ƒu");
-		save.addActionListener(new MENU());
-		menu.add(save);
-		//[----]
-		menu.addSeparator();
-		//[ƒƒjƒ…[]-[ƒ[ƒh]
-		JMenuItem load = new JMenuItem("ƒ[ƒh");
-		load.addActionListener(new MENU());
-		menu.add(load);
-		//[----]
-		menu.addSeparator();
-		//[ƒƒjƒ…[]-[ƒŠƒZƒbƒg]
-		JMenuItem menuReset = new JMenuItem("ƒŠƒZƒbƒg");
-		menuReset.addActionListener(new MENU());
-		menu.add(menuReset);
-		//[----]
-		menu.addSeparator();
-		// [ƒƒjƒ…[]-[I—¹]
-		JMenuItem menuExit = new JMenuItem("I—¹");
-		menuExit.addActionListener(new MENU());
-		menu.add(menuExit);
-		//===========================================================================
-		frame.setVisible(true);	
-		AudioClip start = Applet.newAudioClip(getClass().getResource("start.wav"));
-		start.loop();
-		
+static int k_lavel = 1;
+static int n_lavel = 1;
+static int p_lavel = 1;
+static JLabel l2;	/*ãƒ©ãƒ™ãƒ«ã¸ã®æ–‡å­—å‡ºåŠ›ç”¨*/
+/*ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿*/
+kadai_10_2(){
+JFrame frame = new JFrame("Javaç¬¬10å›èª²é¡Œ");
+//setBounds(è¡¨ç¤ºä½ç½®ï½˜ã€è¡¨ç¤ºä½ç½®ï½™ã€å¹…ã€é«˜ã•ï¼‰
+frame.setBounds(350, 100, 600, 528);
+//ï½˜ã«ã‚ˆã‚‹ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®çµ‚äº†
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//ã‚³ãƒãƒ³ãƒ‰é…ç½®ã®ãƒ‘ãƒãƒ«p1=========================================================
+JPanel p1 = new JPanel();
+p1.setBorder(new EtchedBorder(EtchedBorder.RAISED,Color.white,Color.black));
+p1.setPreferredSize(new Dimension(0,100));	/*xã¯åæ˜ ã•ã‚Œã¦ãªã„ã€‚å¹…ã¯è‡ªå‹•ã ã¨æ€ã‚ã‚Œã‚‹ã€‚*/
+p1.setLayout(new GridLayout(2,3));
+//ãƒœã‚¿ãƒ³ã‚’ãƒ‘ãƒãƒ«p1ã«è¿½åŠ ;---------------------------------------------------------
+ArrayList<JButton> button = new ArrayList<JButton>();	/*ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã®ä½¿ç”¨*/
+ImageIcon neko = new ImageIcon(getClass().getResource("neko.png"));
+ImageIcon kama = new ImageIcon(getClass().getResource("kama.png"));
+ImageIcon pu = new ImageIcon(getClass().getResource("pu.png"));
+button.add(new JButton("ãƒã‚¿ã‚¿ãƒ“"));
+button.add(new JButton("ãƒãƒƒã‚¿"));
+button.add(new JButton("ã‚¤ãƒç§‘ã®è‰"));
+button.add(new JButton("ãƒã‚³ ",neko));
+button.add(new JButton("ã‚«ãƒã‚­ãƒª ",kama));
+button.add(new JButton("ãƒ—ãƒ¬ãƒ¼ãƒªãƒ¼ãƒ‰ãƒƒã‚°",pu));
+for(JButton x:button){
+p1.add(x);
 }
-	
-	
-	//ƒŒƒxƒ‹ƒAƒbƒvQƒAƒNƒVƒ‡ƒ“===========================================================
-	/*static‚È‚µ‚¾‚Ækadai_10_2‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚©‚ç‚µ‚©¶¬‚Å‚«‚È‚¢*/
-	static class levelUp implements ActionListener{
-		int num;
-		AudioClip UP;
-		levelUp(int num){
-			this.num = num;
-		}
-		public void actionPerformed(ActionEvent e){
-			UP = Applet.newAudioClip(getClass().getResource("UP.wav"));
-			UP.play();
-			if(num==1){
-				n_lavel++;
-				l2.setText("ƒlƒR‚ÌƒŒƒxƒ‹‚ªã‚ª‚Á‚½");
-			}
-			else if(num==2){
-				k_lavel++;
-				l2.setText("ƒJƒ}ƒLƒŠ‚ÌƒŒƒxƒ‹‚ªã‚ª‚Á‚½");
-			}
-			else if(num==3){
-				p_lavel++;
-				l2.setText("ƒvƒŒ[ƒŠ[ƒhƒbƒO‚ÌƒŒƒxƒ‹‚ªã‚ª‚Á‚½");
-			}
-			
-		}
-	}//============================================================================
-	//ƒXƒe[ƒ^ƒXQƒAƒNƒVƒ‡ƒ“===============================================================
-	static class status implements ActionListener{
-		int num;
-		status(int num){
-			this.num = num;
-		}
-		public void actionPerformed(ActionEvent e){
-			AudioClip click = Applet.newAudioClip(getClass().getResource("pi.wav"));
-			click.play();
-			if(num==1) l2.setText("ƒlƒR‚ÌƒŒƒxƒ‹:"+n_lavel);
-			else if(num==2) l2.setText("ƒJƒ}ƒLƒŠ‚ÌƒŒƒxƒ‹:"+k_lavel);
-			else if(num==3) l2.setText("ƒvƒŒ[ƒŠ[ƒhƒbƒO‚ÌƒŒƒxƒ‹:"+p_lavel);
-		}
-	}//=============================================================================
-	//ƒƒjƒ…[QƒAƒNƒVƒ‡ƒ“=================================================================
-	static class MENU implements ActionListener{
-		public void actionPerformed(ActionEvent e) {
-			String reset = "ƒŠƒZƒbƒg";
-			String exit = "I—¹";
-			String save = "ƒZ[ƒu";
-			String load = "ƒ[ƒh";
-			//ƒŠƒZƒbƒg-------------------------------------------------------------------
-			if(reset.equals(e.getActionCommand())) {
-				AudioClip click = Applet.newAudioClip(getClass().getResource("pi.wav"));
-				click.play();
-				n_lavel = k_lavel = p_lavel =1;
-				l2.setText("‰Šú‰»‚³‚ê‚Ü‚µ‚½");
-			}
-			//I—¹---------------------------------------------------------------------
-			else if(exit.equals(e.getActionCommand()))
-				System.exit(0);
-			//ƒ[ƒh---------------------------------------------------------------------
-			else if(load.equals(e.getActionCommand())){
-				l2.setText("ƒ[ƒh‚µ‚Ü‚µ‚½");
-				AudioClip LOAD = Applet.newAudioClip(getClass().getResource("load.wav"));
-				LOAD.play();
-				try {
-					BufferedReader br 
-					= new BufferedReader(new FileReader("save.txt"));
-					//ƒtƒ@ƒCƒ‹‚ÌêŠ’ˆÓBƒfƒtƒHƒ‹ƒgƒpƒbƒP[ƒW“à‚¾‚ÆƒGƒ‰[BTestƒtƒ@ƒCƒ‹“àB
-					//ƒvƒƒWƒFƒNƒg‚ğ‰EƒNƒŠƒbƒNAV‹K‚©‚çtxtì¬‚Å‚¢‚¢B
-					String str;
-					while (true) {
-						str = br.readLine();
-						if (str == null) break;
-						StringTokenizer st = new StringTokenizer(str, ",");
-						n_lavel = Integer.parseInt(st.nextToken());
-						k_lavel = Integer.parseInt(st.nextToken());
-						p_lavel = Integer.parseInt(st.nextToken());
-					}
-					br.close();
-				} catch (IOException er) {
-					er.printStackTrace();
-				}
-			}
-			//ƒZ[ƒu-----------------------------------------------------------------
-			else if(save.equals(e.getActionCommand())){
-				l2.setText("ƒZ[ƒu‚µ‚Ü‚µ‚½");
-				AudioClip SAVE = Applet.newAudioClip(getClass().getResource("save.wav"));
-				SAVE.play();
-				try{
-					  File file = new File("save.txt");
-					  FileWriter filewriter = new FileWriter(file);
-					  filewriter.write(n_lavel+","+k_lavel+","+p_lavel);
-					  filewriter.close();
-					}catch(IOException er){
-					  System.out.println(er);
-					}
-			}
-		}
-	}//===============================================================================
-	
-	public static void main(String args[]) {
-		new kadai_10_2();
-	}
+JButton b1 = button.get(0);
+JButton b2 = button.get(1);
+JButton b3 = button.get(2);
+JButton b4 = button.get(3);
+JButton b5 = button.get(4);
+JButton b6 = button.get(5);
+b1.addActionListener(new levelUp(1));
+b2.addActionListener(new levelUp(2));
+b3.addActionListener(new levelUp(3));
+b4.addActionListener(new status(1));
+b5.addActionListener(new status(2));
+b6.addActionListener(new status(3));
+frame.add(p1, BorderLayout.SOUTH);
+//========================================================================
+//ç”»åƒç”¨ã®ãƒ©ãƒ™ãƒ«l1===========================================================
+JLabel l1 = new JLabel();
+l1.setPreferredSize(new Dimension(600,365));
+ImageIcon backGround = new ImageIcon(getClass().getResource("background.png"));
+l1.setIcon(backGround);
+frame.add(l1,BorderLayout.NORTH);
+
+//æ–‡å­—ç”¨ã®ãƒ‘ãƒãƒ«p2-----------------------------------------------------------
+JPanel p2 = new JPanel();
+p2.setPreferredSize(new Dimension(500,100));
+p2.setBackground(Color.BLACK);
+p2.setBorder(new LineBorder(Color.white, 4, false));
+l1.setLayout(new BorderLayout());	
+//æ–‡å­—ã®è¡¨ç¤ºç”¨ã®ãƒ©ãƒ™ãƒ«l2------------------------------------------------------
+l2 = new JLabel();
+l2.setPreferredSize(new Dimension(400,70));
+l2.setForeground(Color.white);	/*æ–‡å­—ã®è‰²*/
+p2.setLayout(new BorderLayout());	/*p2ã«è²¼ã‚Šä»˜ã‘*/
+p2.add(l2,BorderLayout.CENTER);
+l1.add(p2,BorderLayout.SOUTH);	/*p2ã‚’l1ã«è²¼ã‚Šä»˜ã‘*/
+
+//ã‚­ãƒ£ãƒ©ã®è²¼ã‚Šä»˜ã‘ãƒ‘ãƒãƒ«p3-------------------------------------------------------
+JPanel p3 = new JPanel();
+p3.setPreferredSize(new Dimension(500,350));
+p3.setOpaque(false);	/*ãƒ‘ãƒãƒ«èƒŒæ™¯ã®é€æ˜åŒ–*/
+p3.setLayout(new BorderLayout());
+//ã‚­ãƒ£ãƒ©ã®è²¼ã‚Šä»˜ã‘ãƒ©ãƒ™ãƒ«l3--------------------------------------------------------
+JLabel l3 = new JLabel();
+JLabel l4 = new JLabel();
+JLabel l5 = new JLabel();
+ImageIcon kamakiri1 = new ImageIcon(getClass().getResource("kamakiri1.png"));
+ImageIcon neko1 = new ImageIcon(getClass().getResource("neko1.png"));
+ImageIcon pureri1 = new ImageIcon(getClass().getResource("pureri1.png"));
+l3.setIcon(kamakiri1);
+l4.setIcon(neko1);
+l5.setIcon(pureri1);
+p3.add(l3,BorderLayout.CENTER);	/*p3ã«è²¼ã‚Šä»˜ã‘*/
+p3.add(l4,BorderLayout.WEST);
+p3.add(l5,BorderLayout.EAST);
+l1.add(p3,BorderLayout.NORTH);	/*p3ã‚’l1ã«è²¼ã‚Šä»˜ã‘*/
+
+//========================================================================
+//ãƒãƒ¼ã®ä½œæˆ================================================================
+JMenuBar menuBar = new JMenuBar();
+frame.setJMenuBar(menuBar);
+//[ãƒ¡ãƒ‹ãƒ¥ãƒ¼]
+JMenu menu = new JMenu("ãƒ¡ãƒ‹ãƒ¥ãƒ¼");
+menuBar.add(menu);
+//[ãƒ¡ãƒ‹ãƒ¥ãƒ¼]-[ã‚»ãƒ¼ãƒ–]
+JMenuItem save = new JMenuItem("ã‚»ãƒ¼ãƒ–");
+save.addActionListener(new MENU());
+menu.add(save);
+//[----]
+menu.addSeparator();
+//[ãƒ¡ãƒ‹ãƒ¥ãƒ¼]-[ãƒ­ãƒ¼ãƒ‰]
+JMenuItem load = new JMenuItem("ãƒ­ãƒ¼ãƒ‰");
+load.addActionListener(new MENU());
+menu.add(load);
+//[----]
+menu.addSeparator();
+//[ãƒ¡ãƒ‹ãƒ¥ãƒ¼]-[ãƒªã‚»ãƒƒãƒˆ]
+JMenuItem menuReset = new JMenuItem("æœ€åˆã‹ã‚‰ã¯ã˜ã‚ã‚‹");
+menuReset.addActionListener(new MENU());
+menu.add(menuReset);
+//[----]
+menu.addSeparator();
+// [ãƒ¡ãƒ‹ãƒ¥ãƒ¼]-[çµ‚äº†]
+JMenuItem menuExit = new JMenuItem("çµ‚äº†");
+menuExit.addActionListener(new MENU());
+menu.add(menuExit);
+//===========================================================================
+frame.setVisible(true);	
+AudioClip start = Applet.newAudioClip(getClass().getResource("start.wav"));
+start.loop();
+
+}
+
+
+//ãƒ¬ãƒ™ãƒ«ã‚¢ãƒƒãƒ—ï¼¿ã‚¢ã‚¯ã‚·ãƒ§ãƒ³===========================================================
+/*staticãªã—ã ã¨kadai_10_2ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‹ã‚‰ã—ã‹ç”Ÿæˆã§ããªã„*/
+static class levelUp implements ActionListener{
+int num;
+AudioClip UP;
+levelUp(int num){
+this.num = num;
+}
+public void actionPerformed(ActionEvent e){
+UP = Applet.newAudioClip(getClass().getResource("UP.wav"));
+UP.play();
+if(num==1){
+n_lavel++;
+l2.setText("ãƒã‚³ã®ãƒ¬ãƒ™ãƒ«ãŒä¸ŠãŒã£ãŸ");
+}
+else if(num==2){
+k_lavel++;
+l2.setText("ã‚«ãƒã‚­ãƒªã®ãƒ¬ãƒ™ãƒ«ãŒä¸ŠãŒã£ãŸ");
+}
+else if(num==3){
+p_lavel++;
+l2.setText("ãƒ—ãƒ¬ãƒ¼ãƒªãƒ¼ãƒ‰ãƒƒã‚°ã®ãƒ¬ãƒ™ãƒ«ãŒä¸ŠãŒã£ãŸ");
+}
+
+}
+}//============================================================================
+//ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ï¼¿ã‚¢ã‚¯ã‚·ãƒ§ãƒ³===============================================================
+static class status implements ActionListener{
+int num;
+status(int num){
+this.num = num;
+}
+public void actionPerformed(ActionEvent e){
+AudioClip click = Applet.newAudioClip(getClass().getResource("pi.wav"));
+click.play();
+if(num==1) l2.setText("ãƒã‚³ã®ãƒ¬ãƒ™ãƒ«:"+n_lavel);
+else if(num==2) l2.setText("ã‚«ãƒã‚­ãƒªã®ãƒ¬ãƒ™ãƒ«:"+k_lavel);
+else if(num==3) l2.setText("ãƒ—ãƒ¬ãƒ¼ãƒªãƒ¼ãƒ‰ãƒƒã‚°ã®ãƒ¬ãƒ™ãƒ«:"+p_lavel);
+}
+}//=============================================================================
+//ãƒ¡ãƒ‹ãƒ¥ãƒ¼ï¼¿ã‚¢ã‚¯ã‚·ãƒ§ãƒ³=================================================================
+static class MENU implements ActionListener{
+public void actionPerformed(ActionEvent e) {
+String reset = "æœ€åˆã‹ã‚‰ã¯ã˜ã‚ã‚‹";
+String exit = "çµ‚äº†";
+String save = "ã‚»ãƒ¼ãƒ–";
+String load = "ãƒ­ãƒ¼ãƒ‰";
+//ãƒªã‚»ãƒƒãƒˆ-------------------------------------------------------------------
+if(reset.equals(e.getActionCommand())) {
+AudioClip click = Applet.newAudioClip(getClass().getResource("pi.wav"));
+click.play();
+n_lavel = k_lavel = p_lavel =1;
+l2.setText("åˆæœŸåŒ–ã•ã‚Œã¾ã—ãŸ");
+}
+//çµ‚äº†---------------------------------------------------------------------
+else if(exit.equals(e.getActionCommand()))
+System.exit(0);
+//ãƒ­ãƒ¼ãƒ‰---------------------------------------------------------------------
+else if(load.equals(e.getActionCommand())){
+l2.setText("ãƒ­ãƒ¼ãƒ‰ã—ã¾ã—ãŸ");
+AudioClip LOAD = Applet.newAudioClip(getClass().getResource("load.wav"));
+LOAD.play();
+try {
+BufferedReader br
+= new BufferedReader(new FileReader("save.txt"));
+//ãƒ•ã‚¡ã‚¤ãƒ«ã®å ´æ‰€æ³¨æ„ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ‘ãƒƒã‚±ãƒ¼ã‚¸å†…ã ã¨ã‚¨ãƒ©ãƒ¼ã€‚Testãƒ•ã‚¡ã‚¤ãƒ«å†…ã€‚
+//ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å³ã‚¯ãƒªãƒƒã‚¯ã€æ–°è¦ã‹ã‚‰txtä½œæˆã§ã„ã„ã€‚
+String str;
+while (true) {
+str = br.readLine();
+if (str == null) break;
+StringTokenizer st = new StringTokenizer(str, ",");
+n_lavel = Integer.parseInt(st.nextToken());
+k_lavel = Integer.parseInt(st.nextToken());
+p_lavel = Integer.parseInt(st.nextToken());
+}
+br.close();
+} catch (IOException er) {
+er.printStackTrace();
+}
+}
+//ã‚»ãƒ¼ãƒ–-----------------------------------------------------------------
+else if(save.equals(e.getActionCommand())){
+l2.setText("ã‚»ãƒ¼ãƒ–ã—ã¾ã—ãŸ");
+AudioClip SAVE = Applet.newAudioClip(getClass().getResource("save.wav"));
+SAVE.play();
+try{
+File file = new File("save.txt");
+FileWriter filewriter = new FileWriter(file);
+filewriter.write(n_lavel+","+k_lavel+","+p_lavel);
+filewriter.close();
+}catch(IOException er){
+System.out.println(er);
+}
+}
+}
+}//===============================================================================
+
+public static void main(String args[]) {
+new kadai_10_2();
+}
 }
