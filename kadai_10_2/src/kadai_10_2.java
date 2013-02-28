@@ -1,3 +1,5 @@
+//ここの部分のコメントだけを変更しました。
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
