@@ -1,6 +1,3 @@
-//ここの部分のコメントだけを変更しました。
-//さらに変更
-//さらに変更
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
